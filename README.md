@@ -1,2 +1,2 @@
-# Cave-Game
+# Cave Game
 A game!  About caves!
