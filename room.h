@@ -6,10 +6,8 @@
  * Copyright 2016    *
  * * Benji Dial and  *
    * James Thompson  * *
- * * under MIT License * *
- * This file written by  *
- * * Benji Dial  * * * * *
-   * * * * * * * */
+   * under MIT License *
+   * * * * * * * * * * */
 
 enum direction
 {
