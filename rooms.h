@@ -25,6 +25,9 @@ If you don't want anything spoiled, don't read past this line.
 
 room *rooms[] =
 {
+  /* Offset so Room 01 is *(rooms[1]) */
+  0,
+  
   /* Room 01 */
   room("It is a warm, summer evening.  You are standing in a large field, and staring into the depths of a dark and foreboding cave to the east.",
        "You hear bagpipes playing in the distance.",
