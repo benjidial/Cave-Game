@@ -31,17 +31,8 @@ enum command
 class room
 {
 public:
-  room(string desc, string hear, string see, string touch, int adjacentRooms[], bool canGo[], string failMessages[], string successMessages[])
-  {
-    m_desc = desc;
-    m_hear = hear;
-    m_see = see;
-    m_touch = touch;
-    m_adjacentRooms = adjacentRooms;
-    m_canGo = canGo;
-    m_failMessages = failMessages;
-    m_successMessages = successMessages;
-  }
+  room(string desc, string hear, string see, string touch, int adjacentRooms[], bool canGo[], string failMessages[], string successMessages[]) :
+    m_desc(desc), m_hear(hear), m_see(see), m_touch(touch), m_adjacentRooms(adjacentRooms), m_canGo(canGo), m_failMessages(failMessages), m_successMessages(successMessages) {}
 
   room *go(direction dir)  //returns new roomId or 0
   {
