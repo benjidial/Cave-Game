@@ -17,7 +17,7 @@ int main()
   std::cout << currentRoom->desc << std::endl;
   while (true)
   {
-    string input;
+    std::string input;
     std::cin >> input;
     direction inDir;
     command inCom = nav;

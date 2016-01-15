@@ -31,7 +31,7 @@ enum command
 class room
 {
 public:
-  room(string desc, string hear, string see, string touch, int adjacentRooms[], bool canGo[], string failMessages[], string successMessages[]) :
+  room(std::string desc, std::string hear, std::string see, std::string touch, int adjacentRooms[], bool canGo[], std::string failMessages[], std::string successMessages[]) :
     m_desc(desc), m_hear(hear), m_see(see), m_touch(touch), m_adjacentRooms(adjacentRooms), m_canGo(canGo), m_failMessages(failMessages), m_successMessages(successMessages)
   {
     if (m_failMessages[north] = "")
@@ -76,12 +76,12 @@ public:
   }
 
 private:
-  string m_desc;
-  string m_hear;
-  string m_see;
-  string m_touch;
+  std::string m_desc;
+  std::string m_hear;
+  std::string m_see;
+  std::string m_touch;
   int m_adjacentRooms[];     //Ids
   bool m_canGo[];
-  string m_failMessages[];   //Message printed if you can't go that way
-  string m_successMessages[];//Message printed if you can go that way
+  std::string m_failMessages[];   //Message printed if you can't go that way
+  std::string m_successMessages[];//Message printed if you can go that way
 };
