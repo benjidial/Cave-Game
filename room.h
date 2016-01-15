@@ -24,10 +24,12 @@ enum direction
 enum command
 {
   invalid = 0,
+  ambiguous,
   nav,
   hear,
   see,
-  touch
+  touch,
+  help
 };
 
 class room
