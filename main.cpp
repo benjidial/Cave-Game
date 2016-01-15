@@ -14,7 +14,7 @@
 int main()
 {
   room *currentRoom = &(rooms[1]);
-  std::cout << currentRoom->desc << std::endl;
+  currentRoom->sayDesc();
   while (true)
   {
     std::string input;
@@ -44,12 +44,14 @@ int main()
     switch (inCom)
     {
       case nav:
-        int newRoomId = currentRoom->go(inDir);
-        if (newRoomId != 0)
-        {
-          currentRoom = &(rooms[newRoomId]);
-          std::cout << currentRoom->desc << std::endl;
-        }
+        { // Have to destroy newRoomId to make c++ happy
+          int newRoomId = currentRoom->go(inDir);
+          if (newRoomId != 0)
+          {
+            currentRoom = &(rooms[newRoomId]);
+            currentRoom->sayDesc();
+          }
+        } // Have to destroy newRoomId to make c++ happy
         break;
       case invalid:
         std::cout << "I don't understand \"" << input << "\"." << std::endl;

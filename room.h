@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <iostream>
 
@@ -31,31 +33,66 @@ enum command
 class room
 {
 public:
-  room(std::string desc, std::string hear, std::string see, std::string touch, int adjacentRooms[], bool canGo[], std::string failMessages[], std::string successMessages[]) :
-    m_desc(desc), m_hear(hear), m_see(see), m_touch(touch), m_adjacentRooms(adjacentRooms), m_canGo(canGo), m_failMessages(failMessages), m_successMessages(successMessages)
+  room(std::string desc, std::string hear, std::string see, std::string touch,
+    int arn, int ars, int arw, int are, int aru, int ard,      //adjacent rooms' ids
+    bool cgn, bool cgs, bool cgw, bool cge, bool cgu, bool cgd,//can go to adjacent rooms
+    std::string fmn, std::string fms, std::string fmw,         //fail messages
+    std::string fme, std::string fmu, std::string fmd,         //more fail messages
+    std::string smn, std::string sms, std::string smw,         //success messages
+    std::string sme, std::string smu, std::string smd) :       //more success messages
+    m_desc(desc), m_hear(hear), m_see(see), m_touch(touch)
   {
-    if (m_failMessages[north] = "")
-      m_failMessages[north] = "The wall is unyielding.";
-    if (m_failMessages[south] = "")
-      m_failMessages[south] = "The wall is unyielding.";
-    if (m_failMessages[west] = "")
-      m_failMessages[west] = "The wall is unyielding.";
-    if (m_failMessages[east] = "")
-      m_failMessages[east] = "The wall is unyielding.";
-    if (m_failMessages[up] = "")
-      m_failMessages[up] = "The ceiling above seems as steady as, well...rock.";
-    if (m_failMessages[down] = "")
-      m_failMessages[down] = "The floor doesn’t budge.";
+    m_adjacentRooms[0] = arn;
+    m_adjacentRooms[1] = ars;
+    m_adjacentRooms[2] = arw;
+    m_adjacentRooms[3] = are;
+    m_adjacentRooms[4] = aru;
+    m_adjacentRooms[5] = ard;
+    m_canGo[0] = cgn;
+    m_canGo[1] = cgs;
+    m_canGo[2] = cgw;
+    m_canGo[3] = cge;
+    m_canGo[4] = cgu;
+    m_canGo[5] = cgd;
+    m_failMessages[0] = fmn;
+    m_failMessages[1] = fms;
+    m_failMessages[2] = fmw;
+    m_failMessages[3] = fme;
+    m_failMessages[4] = fmu;
+    m_failMessages[5] = fmd;
+    m_successMessages[0] = smn;
+    m_successMessages[1] = sms;
+    m_successMessages[2] = smw;
+    m_successMessages[3] = sme;
+    m_successMessages[4] = smu;
+    m_successMessages[5] = smd;
   }
 
-  room *go(direction dir)  //returns new roomId or 0
+  int go(direction dir)  //returns new roomId or 0
   {
     if (m_canGo[dir])
     {
       std::cout << m_successMessages[dir] << std::endl;
       return m_adjacentRooms[dir];
     }
-    std::cout << m_failMessages[dir] << std::endl;
+    if (m_failMessages[dir] == "")
+      switch (dir)
+      {
+        case north:
+        case south:
+        case west:
+        case east:
+          std::cout << "The wall is unyielding." << std::endl;
+          break;
+        case up:
+          std::cout << "The ceiling above seems as steady as, well... rock." << std::endl;
+          break;
+        case down:
+          std::cout << "The floor doesn't budge." << std::endl;
+          break;
+      }
+    else
+      std::cout << m_failMessages[dir] << std::endl;
     return 0;
   }
 
@@ -75,13 +112,18 @@ public:
     }
   }
 
+  void sayDesc()
+  {
+    std::cout << m_desc << std::endl;
+  }
+
 private:
   std::string m_desc;
   std::string m_hear;
   std::string m_see;
   std::string m_touch;
-  int m_adjacentRooms[];     //Ids
-  bool m_canGo[];
-  std::string m_failMessages[];   //Message printed if you can't go that way
-  std::string m_successMessages[];//Message printed if you can go that way
+  int m_adjacentRooms[6];//Ids
+  bool m_canGo[6];
+  std::string m_failMessages[6];   //Message printed if you can't go that way
+  std::string m_successMessages[6];//Message printed if you can go that way
 };
