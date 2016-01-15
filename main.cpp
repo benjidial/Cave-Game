@@ -13,6 +13,7 @@
 
 int main()
 {
+  std::cout << "Cave Game, v0.1.0\nCopyright 2016 Benji Dial and James Thompson\nPlease read the MIT license (http://opensource.org/licenses/MIT) before using.\nYou can see the source at https://github.com/benjidial/Cave-Game." << std::endl;
   room *currentRoom = &(rooms[1]);
   currentRoom->sayDesc();
   while (true)
