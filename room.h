@@ -32,7 +32,21 @@ class room
 {
 public:
   room(string desc, string hear, string see, string touch, int adjacentRooms[], bool canGo[], string failMessages[], string successMessages[]) :
-    m_desc(desc), m_hear(hear), m_see(see), m_touch(touch), m_adjacentRooms(adjacentRooms), m_canGo(canGo), m_failMessages(failMessages), m_successMessages(successMessages) {}
+    m_desc(desc), m_hear(hear), m_see(see), m_touch(touch), m_adjacentRooms(adjacentRooms), m_canGo(canGo), m_failMessages(failMessages), m_successMessages(successMessages)
+  {
+    if (m_failMessages[north] = "")
+      m_failMessages[north] = "The wall is unyielding.";
+    if (m_failMessages[south] = "")
+      m_failMessages[south] = "The wall is unyielding.";
+    if (m_failMessages[west] = "")
+      m_failMessages[west] = "The wall is unyielding.";
+    if (m_failMessages[east] = "")
+      m_failMessages[east] = "The wall is unyielding.";
+    if (m_failMessages[up] = "")
+      m_failMessages[up] = "The ceiling above seems as steady as, well...rock.";
+    if (m_failMessages[down] = "")
+      m_failMessages[down] = "The floor doesn’t budge.";
+  }
 
   room *go(direction dir)  //returns new roomId or 0
   {
