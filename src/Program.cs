@@ -5,7 +5,9 @@ namespace CaveGame
 {
   class Program
   {
-    static void Main(string[ ] args)
+    public static List<Room> rooms = new List<Room>();
+    public static Entity player = new Entity();//Temporary constructor
+    static void Main( )
     {
 
     }
