@@ -5,7 +5,12 @@ namespace CaveGame
 {
   class Entity
   {
-    Dictionary<string, Item> inventory;
-    int maxItems;
+    public Dictionary<string, Item> inventory;
+    public int maxItems;
+    public Entity(int maxItems)
+    {
+      inventory = new Dictionary<string, Item>();
+      this.maxItems = maxItems;
+    }
   }
 }

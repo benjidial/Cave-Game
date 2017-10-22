@@ -5,12 +5,12 @@ namespace CaveGame
 {
   class Room
   {
-    Dictionary<string, Item> items;
-    Dictionary<string, Room> exits;
-    Dictionary<string, Action> commands;//Room-specific
-    Action onEnter, onExit;
-    string description;
-    public Room(Dictionary<string, Item> items, Dictionary<string, Room> exits, Dictionary<string, Action> commands,
+    public Dictionary<string, Entity> items;
+    public Dictionary<string, Room> exits;
+    public Dictionary<string, Action<string[ ]>> commands;//Room-specific
+    public Action onEnter, onExit;
+    public string description;
+    public Room(Dictionary<string, Entity> items, Dictionary<string, Room> exits, Dictionary<string, Action<string[ ]>> commands,
                 Action onEnter, Action onExit, string description)
     {
       this.items = items;
