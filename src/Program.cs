@@ -3,15 +3,24 @@ using System.Collections.Generic;
 
 namespace CaveGame
 {
-  partial class Program
+  public class Program
   {
+    /// <summary>
+    /// The room which the player is currently in
+    /// </summary>
     public static Room currentRoom;
+    /// <summary>
+    /// The player
+    /// </summary>
     public static Entity player = new Entity(3);
+    /// <summary>
+    /// The container being held by the player, if any
+    /// </summary>
     public static Item container = null;
     static void Main( )
     {
       currentRoom = null;//TODO: Create rooms, make connections
-      currentRoom.items.Add("you", player);
+      currentRoom.contents.Add("you", player);
       Console.WriteLine(currentRoom.description);
       Action<string[ ]> a;
       Room r;
@@ -28,8 +37,8 @@ namespace CaveGame
         else if (currentRoom.exits.TryGetValue(input, out r))
         {
           currentRoom.onExit();
-          currentRoom.items.Remove("you");
-          (currentRoom = r).items.Add("you", player);
+          currentRoom.contents.Remove("you");
+          (currentRoom = r).contents.Add("you", player);
           currentRoom.onEnter();
         }
         else if (input == "look")
@@ -37,17 +46,17 @@ namespace CaveGame
         else if (input.StartsWith("take "))
           if (player.inventory.Count == player.maxItems)
             Console.WriteLine("You have too many items!");
-          else if (currentRoom.items.TryGetValue(s = input.Substring(5), out e))
+          else if (currentRoom.contents.TryGetValue(s = input.Substring(5), out e))
           {
             try
             {
-              Item i = (Item)currentRoom.items[s];
+              Item i = (Item)currentRoom.contents[s];
               if (container != null && i.isContainer)
                 Console.WriteLine(/*TODO*/);
               else
               {
                 i.onPickup();
-                currentRoom.items.Remove(s);
+                currentRoom.contents.Remove(s);
                 player.inventory.Add(s, i);
                 if (i.isContainer)
                   container = i;
@@ -75,7 +84,7 @@ namespace CaveGame
           {
             t.onPutdown();
             player.inventory.Remove(s);
-            currentRoom.items.Add(s, t);
+            currentRoom.contents.Add(s, t);
             if (t.isContainer)
               container = null;
           }
