@@ -20,7 +20,7 @@ namespace CaveGame
     static void Main( )
     {
       currentRoom = null;//TODO: Create rooms, make connections
-      currentRoom.contents.Add("you", player);
+      currentRoom.contents.Add("vi", player);
       Console.WriteLine(currentRoom.description);
       Action<string[ ]> a;
       Room r;
@@ -30,29 +30,29 @@ namespace CaveGame
       while (true)
       {
         string input = Console.ReadLine().ToLower();
-        if (input == "help")
-          Console.WriteLine();//TODO: Write snarky help
+        if (input == "helpu")
+          Console.WriteLine(/*TODO: Write snarky help*/);
         else if (currentRoom.commands.TryGetValue(input.Remove(input.IndexOf(' ')), out a))
           a(input.Substring(input.IndexOf(' ') + 1).Split(' '));
         else if (currentRoom.exits.TryGetValue(input, out r))
         {
           currentRoom.onExit();
-          currentRoom.contents.Remove("you");
-          (currentRoom = r).contents.Add("you", player);
+          currentRoom.contents.Remove("vi");
+          (currentRoom = r).contents.Add("vi", player);
           currentRoom.onEnter();
         }
-        else if (input == "look")
+        else if (input == "rigardu")
           Console.WriteLine(currentRoom.description);
-        else if (input.StartsWith("take "))
+        else if (input.StartsWith("prenu "))
           if (player.inventory.Count == player.maxItems)
-            Console.WriteLine("You have too many items!");
-          else if (currentRoom.contents.TryGetValue(s = input.Substring(5), out e))
+            Console.WriteLine("Vi havas tro objektojn.");
+          else if (currentRoom.contents.TryGetValue(s = input.Substring(6), out e))
           {
             try
             {
               Item i = (Item)currentRoom.contents[s];
               if (container != null && i.isContainer)
-                Console.WriteLine(/*TODO*/);
+                Console.WriteLine("Vi ne povas havi du enhavistojn.");
               else
               {
                 i.onPickup();
@@ -64,7 +64,7 @@ namespace CaveGame
             }
             catch (InvalidCastException)
             {
-              Console.WriteLine("You can't pick that up.");
+              Console.WriteLine("Vi ne povas preni tion.");
             }
           }
           else
@@ -77,10 +77,10 @@ namespace CaveGame
                 player.inventory.Add(s, t);
                 break;
               }
-            Console.WriteLine("I don't see that.");
+            Console.WriteLine("Ne estas tio.");
           }
-        else if (input.StartsWith("drop "))
-          if (player.inventory.TryGetValue(s = input.Substring(5), out t))
+        else if (input.StartsWith("malprenu "))
+          if (player.inventory.TryGetValue(s = input.Substring(9), out t))
           {
             t.onPutdown();
             player.inventory.Remove(s);
@@ -89,20 +89,20 @@ namespace CaveGame
               container = null;
           }
           else
-            Console.WriteLine("I don't see that.");
-        else if (input.StartsWith("store "))
+            Console.WriteLine("Ne estas tio.");
+        else if (input.StartsWith("enhavigu "))
           if (container != null)
-            if (player.inventory.TryGetValue(s = input.Substring(6), out t))
+            if (player.inventory.TryGetValue(s = input.Substring(9), out t))
             {
               player.inventory.Remove(s);
               container.inventory.Add(s, t);
             }
             else
-              Console.WriteLine("You don't have that!");
+              Console.WriteLine("Vi ne havas tion.");
           else
-            Console.WriteLine("You don't have anything to store that in.");
+            Console.WriteLine("Vi ne havas enhaviston.");
         else
-          Console.WriteLine("I don't know what you mean!");
+          Console.WriteLine("Mi ne komprenas.");
       }
     }
   }
