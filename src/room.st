@@ -1,5 +1,9 @@
 Object subclass: Room [
-  | contents description |
+  | contents description roomlist |
+
+  add: room [
+    roomlist add: room
+  ]
 
   new [
     | r |
@@ -10,6 +14,7 @@ Object subclass: Room [
 
   init [
     contents := Dictionary new
+    roomlist := Set new
   ]
 
   read: message with: player [
@@ -35,7 +40,9 @@ Object subclass: Room [
     (first = 'drop') ifTrue [
       player drop: rest to: room.
       ^self
-    ]
+    ].
+
+    'I don't know what you mean!' printNl
   ]
 
   drop: item [
