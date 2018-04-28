@@ -1,5 +1,5 @@
 ﻿Object subclass: Entity [
-  | inventory maxItems canPickUp |
+  | inventory maxItems canPickUp name |
 
   new [
     | r |
@@ -10,5 +10,17 @@
 
   init [
     inventory := Dictionary new
+  ]
+
+  canPickUp [
+    ^canPickUp
+  ]
+
+  pickUp: player [
+    ^true
+  ]
+
+  drop [
+    ^true
   ]
 ]
