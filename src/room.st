@@ -42,7 +42,7 @@ Object subclass: Room [
       ^self
     ].
 
-    'I don't know what you mean!' printNl
+    'I don''t know what you mean!' printNl
   ]
 
   drop: item [
