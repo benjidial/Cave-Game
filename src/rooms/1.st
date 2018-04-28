@@ -15,19 +15,19 @@ Room subclass: Room1 [
     ].
 
     (message = 'feel') ifTrue [
-      'The ground feels like... I think... I've got it!  Ground!'
+      'The ground feels like... I think... I''ve got it!  Ground!'
     ].
 
     (message = 'north') ifTrue [
-      'The forest to your north is lush and dense.  You doubt you can breach the thick foliage, and wonder how you even arrived here.  Come to think of it, you aren't really sure of anything at all before you awoke in the field.  A sudden and powerful inclination urges you to disembark from this train of thought, so you do.' printNl
+      'The forest to your north is lush and dense.  You doubt you can breach the thick foliage, and wonder how you even arrived here.  Come to think of it, you aren''t really sure of anything at all before you awoke in the field.  A sudden and powerful inclination urges you to disembark from this train of thought, so you do.' printNl
     ].
 
     (message = 'south') ifTrue [
-      'The forest to your south is lush and dense.  You doubt you can breach the thick foliage, and wonder how you even arrived here.  Come to think of it, you aren't really sure of anything at all before you awoke in the field.  A sudden and powerful inclination urges you to disembark from this train of thought, so you do.' printNl
+      'The forest to your south is lush and dense.  You doubt you can breach the thick foliage, and wonder how you even arrived here.  Come to think of it, you aren''t really sure of anything at all before you awoke in the field.  A sudden and powerful inclination urges you to disembark from this train of thought, so you do.' printNl
     ].
 
     (message = 'west') ifTrue [
-      'The forest to your west is lush and dense.  You doubt you can breach the thick foliage, and wonder how you even arrived here.  Come to think of it, you aren't really sure of anything at all before you awoke in the field.  A sudden and powerful inclination urges you to disembark from this train of thought, so you do.' printNl
+      'The forest to your west is lush and dense.  You doubt you can breach the thick foliage, and wonder how you even arrived here.  Come to think of it, you aren''t really sure of anything at all before you awoke in the field.  A sudden and powerful inclination urges you to disembark from this train of thought, so you do.' printNl
     ].
 
     ^super read
