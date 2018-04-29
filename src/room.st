@@ -5,12 +5,12 @@ Object subclass: Room [
     contents := Dictionary new
   ]
 
-  read: message with: player [
-    | split first rest item |
+  read: message with: player at: origin [
+    |split first rest item|
 
-    (message = 'look') ifTrue: [
+    (message = 'examine') ifTrue: [
       description displayNl.
-      ^self
+      ^origin
     ].
 
     first := (split := message substrings) at: 1.
@@ -22,16 +22,17 @@ Object subclass: Room [
           contents removeKey rest
         ]
       ].
-      ^self
+      ^origin
     ].
 
     (first = 'drop') ifTrue: [
       player drop: rest to: self.
-      ^self
+      ^origin
     ].
 
-    'I don''t know what you mean!' displayNl
-  ]
+    'I don''t know what you mean!' displayNl.
+    ^origin
+]
 
   drop: item [
     contents at: item getName put: item

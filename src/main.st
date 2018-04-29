@@ -4,13 +4,14 @@
 'You can see the source at https://github.com/benjidial/Cave-Game.' displayNl.
 
 "This will be changed to 7 by v0.2.0:"
-Room initlist: 1.
-Room add: (room := Room1 new) at: 1.
-"Room add: (Room2 new) at: 2."
+Room initlist: 2.
+Room add: (Room1 new) at: 1.
+Room add: (Room2 new) at: 2.
 "Room add: (Room3 new) at: 3."
 "Room add: (Room4 new) at: 4."
 "Room add: (Room5 new) at: 5."
 "Room add: (Room6 new) at: 6."
 "Room add: (Room7 new) at: 7."
-room drop: (player := Player new).
-[ room := room read: (stdin nextLine) with: player ] repeat
+room := 1
+(Room getRoom: room) drop: (player := Player new).
+[ room := (Room getRoom: room) read: (stdin nextLine) with: player ] repeat
