@@ -30,6 +30,21 @@ Object subclass: Room [
       ^origin
     ].
 
+    ((first = 'north') or: (first = 'south') or: (first = 'west') or: (first = 'east')) ifTrue: [
+      'The wall is unyielding.' displayNl.
+      ^origin
+    ]
+
+    (first = 'up') ifTrue: [
+      'The ceiling above seems as steady as, well...rock.' displayNl.
+      ^origin
+    ]
+
+    (first = 'down') ifTrue: [
+      'The floor doesn''t budge.' displayNl.
+      ^origin
+    ]
+
     'I don''t know what you mean!' displayNl.
     ^origin
 ]
