@@ -16,7 +16,11 @@ Object subclass: Entity [
   drop [
     ^true
   ]
-]
+
+  getName [
+    ^name
+  ]
+].
 
 Entity class extend [
   new [

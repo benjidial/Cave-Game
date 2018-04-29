@@ -1,16 +1,15 @@
 Object subclass: Room [
-  | contents description roomlist |
+  | contents description |
 
   init [
-    contents := Dictionary new.
-    roomlist := Set new
+    contents := Dictionary new
   ]
 
-  read: message with: player in: room [
+  read: message with: player [
     | split first rest item |
 
     (message = 'look') ifTrue: [
-      description printNl.
+      description displayNl.
       ^self
     ].
 
@@ -27,21 +26,27 @@ Object subclass: Room [
     ].
 
     (first = 'drop') ifTrue: [
-      player drop: rest to: room.
+      player drop: rest to: self.
       ^self
     ].
 
-    'I don''t know what you mean!' printNl
+    'I don''t know what you mean!' displayNl
   ]
 
   drop: item [
     contents at: item getName put: item
   ]
-]
+].
 
 Room class extend [
-  add: room [
-    roomlist add: room
+  | roomlist |
+
+  initlist: size [
+    roomlist := Array new: size
+  ]
+
+  add: room at: id [
+    roomlist at: id put: room
   ]
 
   new [
@@ -49,5 +54,9 @@ Room class extend [
     r := super new.
     r init.
     ^r
+  ]
+
+  getRoom: id [
+    ^roomlist at: id
   ]
 ]
