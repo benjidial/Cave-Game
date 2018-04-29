@@ -1,5 +1,5 @@
 'Cave Game, v0.2.0 alpha' displayNl.
-'Copyright 2016-2018 Benji Dial and James Thompson' displayNl.
+'Copyright 2016–2018 Benji Dial and James Thompson' displayNl.
 'Please read the MIT license (http://opensource.org/licenses/MIT) before using.' displayNl.
 'You can see the source at https://github.com/benjidial/Cave-Game.' displayNl.
 
