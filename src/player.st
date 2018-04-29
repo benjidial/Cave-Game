@@ -7,10 +7,10 @@ Entity subclass: Player [
   ]
 
   pickUp: item [
-    (inventory size = maxItems) ifTrue [
+    (inventory size = maxItems) ifTrue: [
       ^false
     ].
-    (item pickUp: self) ifFalse [
+    (item pickUp: self) ifFalse: [
       ^false
     ].
     inventory at: item getName put: item.
@@ -19,14 +19,14 @@ Entity subclass: Player [
 
   drop: item to: room [
     | entity |
-    (inventory includesKey: item) ifFalse [
+    (inventory includesKey: item) ifFalse: [
       ^false
     ].
-    (entity := inventory at: item) drop ifFalse [
+    (entity := inventory at: item) drop ifFalse: [
       ^false
     ].
     room drop: entity.
-    inventory removeKey: item
+    inventory removeKey: item.
     ^true
   ]
 ]

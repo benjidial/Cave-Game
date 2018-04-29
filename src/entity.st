@@ -1,12 +1,5 @@
-﻿Object subclass: Entity [
+Object subclass: Entity [
   | inventory maxItems canPickUp name |
-
-  new [
-    | r |
-    r := super new.
-    r init.
-    ^r
-  ]
 
   init [
     inventory := Dictionary new
@@ -22,5 +15,14 @@
 
   drop [
     ^true
+  ]
+]
+
+Entity class extend [
+  new [
+    | r |
+    r := super new.
+    r init.
+    ^r
   ]
 ]
